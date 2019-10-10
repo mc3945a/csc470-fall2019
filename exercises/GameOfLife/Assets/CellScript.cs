@@ -9,14 +9,18 @@ public class CellScript : MonoBehaviour
 	bool prevAlive;
 	public int x = -1;
 	public int y = -1;
+    public float aliveySize = 1.0f;
 
 	Renderer renderer;
+    Vector3 originScale; 
+
 
 	// Start is called before the first frame update
 	void Start()
     {
 		prevAlive = alive;
-	}
+        originScale = this.transform.localScale; // grab original scale of object
+    }
 
     // Update is called once per frame
     void Update()
@@ -36,8 +40,12 @@ public class CellScript : MonoBehaviour
 
 		if (this.alive) {
 			renderer.material.color = Color.magenta;
+            // set scale equal to new vector 3 with new Y size 
+            this.transform.localScale = new Vector3(originScale.x, originScale.y * aliveySize, originScale.z);
 		} else {
-            transform.position = transform.position + new Vector3(10.0f, 10.0f);
+			renderer.material.color = Color.yellow;
+            // set scale back to origin
+            this.transform.localScale = originScale;
         }
 	}
 

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 	int gridHeight = 10;
 
 	float cellDimension = 3.3f;
-	float cellSpacing = 0.2f;
+	float cellSpacing = 0.1f;
 
 	float generationRate = 1f;
 	float generationTimer;
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 	private void Update()
 	{
 		generationTimer -= Time.deltaTime;
-		if (generationTimer < 0 && simulate) {
+		if (generationTimer < 0) {
 			//generate next state
 			generate();
 
