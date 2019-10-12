@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
 			//reset the timer
 			generationTimer = generationRate;
 		}
+        
 	}
 
 	void generate()

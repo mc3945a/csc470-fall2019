@@ -9,7 +9,7 @@ public class CellScript : MonoBehaviour
 	bool prevAlive;
 	public int x = -1;
 	public int y = -1;
-    public float aliveySize = 1.0f;
+    public float aliveySize = 1.2f;
 
 	Renderer renderer;
     Vector3 originScale; 
@@ -29,6 +29,7 @@ public class CellScript : MonoBehaviour
 			updateColor();
 		}
 
+
 		prevAlive = alive;
 	}
 
@@ -39,18 +40,19 @@ public class CellScript : MonoBehaviour
 		}
 
 		if (this.alive) {
-			renderer.material.color = Color.magenta;
-            // set scale equal to new vector 3 with new Y size 
-            this.transform.localScale = new Vector3(originScale.x, originScale.y * aliveySize, originScale.z);
+			renderer.material.color = Color.HSVToRGB(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+			// set scale equal to new vector 3 with new Y size 
+			this.transform.localScale = new Vector3(originScale.x, originScale.y * aliveySize, originScale.z);
 		} else {
-			renderer.material.color = Color.yellow;
-            // set scale back to origin
-            this.transform.localScale = originScale;
+			renderer.material.color = Color.white;
+			// set scale back to origin
+			this.transform.localScale = originScale;
         }
 	}
 
 	private void OnMouseDown()
 	{
 		alive = !alive;
+
 	}
 }
