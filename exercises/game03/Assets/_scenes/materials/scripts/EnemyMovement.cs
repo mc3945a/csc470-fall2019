@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed = 10f;
+    public float minspeed = 10f;
+    public float maxspeed = 20f;
+    private float speed;
     private Transform target;
     private Transform Thistransform;
     // Start is called before the first frame update
@@ -12,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     {
         target = GameManager.instance.player.transform;
         Thistransform = this.transform; //GetComponent(transform)
+        randomizeSpeed();
     }
 
     // Update is called once per frame
@@ -20,5 +23,9 @@ public class EnemyMovement : MonoBehaviour
         Thistransform.LookAt(target);
         Thistransform.Translate(Vector3.forward * Time.deltaTime * speed);
         
+    }
+    public void randomizeSpeed()
+    {
+        speed = Random.Range(minspeed, maxspeed);
     }
 }

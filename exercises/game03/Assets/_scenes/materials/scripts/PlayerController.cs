@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour {
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody>();
-		
-		
-	}
+
+
+    }
 
 	void FixedUpdate ()
 	{

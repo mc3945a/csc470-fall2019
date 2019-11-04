@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth = 100f;
     public float maxHealth = 100f;
     public Image healthBar;
+    public GameObject deathText;
+
+    public static bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         updateHealthBar();
     }
 
@@ -19,6 +24,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void affectHealth(float amount)
     {
+        if (Timer.finishedLevel)
+        {
+            return;
+        }
         currentHealth += amount;
         if(currentHealth > maxHealth)
         {
@@ -27,14 +36,18 @@ public class PlayerHealth : MonoBehaviour
         else if(currentHealth <= 0)
         {
             currentHealth = 0;
-            die();
+            StartCoroutine(die());
         }
         updateHealthBar();
     }
 
-    void die()
+    IEnumerator die()
     {
-        //todo
+        isDead = true;
+        GetComponent<PlayerController>().enabled = false;
+        deathText.SetActive(true);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void updateHealthBar()
