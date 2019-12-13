@@ -1369,7 +1369,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 82}
-  m_SizeDelta: {x: 1178.5, y: 520.4}
+  m_SizeDelta: {x: 1303.65, y: 520.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1964535329
 MonoBehaviour:
@@ -1402,7 +1402,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hospital Run
+  m_Text: Hospital Drift
 --- !u!222 &1964535330
 CanvasRenderer:
   m_ObjectHideFlags: 0
